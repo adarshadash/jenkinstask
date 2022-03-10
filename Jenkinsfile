@@ -29,11 +29,9 @@ pipeline{
                welcome.updateApplication()
                sh "git add ${env.WORKSPACE}/application.yaml"
                sh "cat ${env.WORKSPACE}/application.yaml"
-               sh "echo 'The current build is: ${version}'"
                sh "git add ."
-               sh "git commit -m 'ignore-commit increment version: ${version}'"
                sh "pwd"
-               sh "git push -u origin main"
+               sh "git push origin HEAD:${env.BRANCH_NAME}"
                }
             }
         }
