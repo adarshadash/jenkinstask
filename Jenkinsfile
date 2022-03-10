@@ -25,7 +25,7 @@ pipeline{
                calculator.add(4,5)
                calculator.multiply(5,6)
                welcome.anothercall("OtherCall-Name")
-               welcome.incrementbyone(welcome.getBuild())
+               version=welcome.incrementbyone(welcome.getBuild())
                welcome.updateApplication()
                sh "git add ${env.WORKSPACE}/application.yaml"
                sh "cat ${env.WORKSPACE}/application.yaml"
