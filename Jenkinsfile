@@ -25,16 +25,19 @@ pipeline{
                calculator.add(4,5)
                calculator.multiply(5,6)
                welcome.anothercall("OtherCall-Name")
-               welcome.incrementbyone(welcome.getBuild())
+               version = welcome.incrementbyone(welcome.getBuild())
                welcome.updateApplication()
                sh "git add ${env.WORKSPACE}/application.yaml"
                sh "cat ${env.WORKSPACE}/application.yaml"
-               sh "git config --global user.email 'adi.dash880@gmail.com'"
+              /* sh "git config --global user.email 'adi.dash880@gmail.com'"
                sh "git config --global user.name 'adarshadash'"
-               sh "git remote set-url origin git@github.com:adarshadash/jenkinstask.git"    
+               sh "git remote set-url origin git@github.com:adarshadash/jenkinstask.git"    */
+                   
                sh "git add ."
                sh "pwd"
-               sh "git push origin HEAD:${env.BRANCH_NAME}"
+                   sh "git commit -m 'commit message ${version}'"
+                   sh "git tag -a -m 'commit push message ${version}' ${version}"    
+               /*sh "git push origin HEAD:${env.BRANCH_NAME}"*/
                }
             }
         }
