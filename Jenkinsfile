@@ -29,6 +29,9 @@ pipeline{
                welcome.updateApplication()
                sh "git add ${env.WORKSPACE}/application.yaml"
                sh "cat ${env.WORKSPACE}/application.yaml"
+               sh "git config --global user.email 'adi.dash880@gmail.com'"
+               sh "git config --global user.name 'adarshadash'"
+               sh "git remote set-url origin git@github.com:adarshadash/jenkinstask.git"    
                sh "git add ."
                sh "pwd"
                sh "git push origin HEAD:${env.BRANCH_NAME}"
