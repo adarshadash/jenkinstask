@@ -32,7 +32,6 @@ pipeline{
                sh "echo 'The current build is: ${version}'"
                sh "git remote set-url origin https://github.com/adarshadash/sharedlibrary.git"
                sh "git add ."
-               sh "git pull"
                sh "git commit -m 'ignore-commit increment version: ${version}'"
                sh "pwd"
                sh "git push -u origin main"
