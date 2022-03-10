@@ -29,11 +29,12 @@ pipeline{
                welcome.updateApplication()
                sh "git add ${env.WORKSPACE}/application.yaml"
                sh "cat ${env.WORKSPACE}/application.yaml"
-               sh "echo 'The current build is: ${version}'"
+               sh "git config --global user.email 'adi.dash880@gmail.com'"
+               sh "git config --global user.name 'adarshadash'"
+               sh "git remote set-url origin git@github.com:adarshadash/jenkinstask.git"    
                sh "git add ."
-               sh "git commit -m 'ignore-commit increment version: ${version}'"
                sh "pwd"
-               sh "git push -u origin main"
+               sh "git push origin HEAD:${env.BRANCH_NAME}"
                }
             }
         }
@@ -55,9 +56,10 @@ pipeline{
             }
         }
     }
-    /*post {
+    post {
     always {
       cleanWs()
     }
-  }*/
+  }
 }
+
