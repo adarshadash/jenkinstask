@@ -15,6 +15,7 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
+                checkout scm
             }
         }
         stage('checking function from shared Library') {
@@ -25,14 +26,20 @@ pipeline{
                calculator.multiply(5,6)
                welcome.anothercall("OtherCall-Name")
                welcome.incrementbyone(welcome.getBuild())
-               welcome.updateApplication()    
+               welcome.updateApplication()
+               sh "git add ${env.WORKSPACE}/application.yaml"
+               sh "cat ${env.WORKSPACE}/application.yaml"
+               sh "echo 'The current build is: ${version}'"
+               sh "git add ."
+               sh "git commit -m 'ignore-commit increment version: ${version}'"
+               sh "pwd"
+               sh "git push -u origin main"
                }
             }
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                  def tagtoadd = getTag()    
+                script {   
                   sh 'docker build -t adarshadash/sample:1.5 .'
                 }
             }
