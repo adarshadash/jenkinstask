@@ -35,8 +35,8 @@ pipeline{
                    
                sh "git add ."
                sh "pwd"
-               sh "git commit -m 'commit message ${version}'"
-               sh "git tag -a -m 'commit push message ${version}' ${version}"    
+               sh "git commit -m 'increament commit message ${version}'"
+               sh "git tag -a -m 'version ${version}' ${version}"    
                sh "git push origin HEAD:${env.BRANCH_NAME}"
                }
             }
