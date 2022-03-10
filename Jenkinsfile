@@ -15,6 +15,7 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
+                checkout scm
             }
         }
         stage('checking function from shared Library') {
