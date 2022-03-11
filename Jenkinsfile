@@ -15,7 +15,9 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
-               checkout([$class: 'GitSCM', branches: [[name: '*/main']], clean:true,
+               checkout(poll:false,
+                        changelog:false,
+                   scm:[$class: 'GitSCM', branches: [[name: '*/main']], clean:true,
                          doGenerateSubmoduleConfigurations: false, 
                          extensions: [ [$class: 'DisableRemotePoll'],[$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: 'src/.*']],
                        userRemoteConfigs: [[credentialsId: 'jenkins_id', url: 'git@github.com:adarshadash/jenkinstask.git']] 
