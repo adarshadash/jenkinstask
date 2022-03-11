@@ -64,7 +64,7 @@ pipeline{
                  withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u adarshadash -p ${dockerhubpwd}'
                  }  
-                    sh '''docker push adarshadash/sample:${version} '''
+                    sh '''docker push adarshadash/sample:2.3 '''
                 }
             }
         }
