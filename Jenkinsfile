@@ -53,7 +53,7 @@ pipeline{
             steps {
                 script {   
                   version = welcome.getBuild()    
-                  sh 'docker build -t adarshadash/sample:${version} .'
+                  sh 'docker build -t adarshadash/sample .'
                 }
             }
         }
