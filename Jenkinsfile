@@ -16,7 +16,7 @@ pipeline{
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
                     checkout scm: [$class: 'GitSCM', 
-            branches: [[name: 'master']], 
+            branches: [[name: 'main']], 
             extensions: [[$class: 'UserExclusion', excludedUsers: 'jenkinsadmin']]]
             }
         }
