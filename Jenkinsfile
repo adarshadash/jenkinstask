@@ -16,7 +16,7 @@ pipeline{
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
                 checkout([$class: 'GitSCM',branches: [[name: "*/${env.BRANCH_NAME}"]],
-            extensions: [[$class: 'DisableRemotePoll'], [$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: '*']]
+            extensions: [[$class: 'DisableRemotePoll'], [$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: 'src/.*']]
         ])
             }
         }
