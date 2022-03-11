@@ -18,7 +18,7 @@ pipeline{
                 checkout([$class: 'GitSCM',branches: [[name: "*/${env.BRANCH_NAME}"]],
             extensions: [[$class: 'DisableRemotePoll'], [$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: 'src/.*']]
         ],gitTool: 'Default',submoduleCfg: [],
-  userRemoteConfigs: [[url: "git@github.com:adarshadash/jenkinstask.git", credentialsId: "jenkins_id"]]])
+  userRemoteConfigs: [[url: "git@github.com:adarshadash/jenkinstask.git", credentialsId: "jenkins_id"]])
             }
         }
         stage('checking function from shared Library') {
