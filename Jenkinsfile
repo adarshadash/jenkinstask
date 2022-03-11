@@ -9,8 +9,7 @@ pipeline{
         registry = "adarshadash/mypythonapp"
         //- update your credentials ID after creating credentials for connecting to Docker Hub
         registryCredential = 'dockerhub_secret'
-        dockerImage = ''
-        version=''  
+        dockerImage = '' 
     }
     stages {
         stage('checkout code') {
@@ -60,6 +59,7 @@ pipeline{
         stage('Deploy Docker Image') {
             steps {
                 script {
+                 def version = welcome.getBuild()   
                  withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u adarshadash -p ${dockerhubpwd}'
                  }  
