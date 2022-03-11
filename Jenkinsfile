@@ -15,8 +15,7 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
-                  checkout(
-                        scm: [
+                checkout([$class: 'GitSCM',branches: [[name: "*/${env.BRANCH_NAME}"]],
             extensions: [[$class: 'DisableRemotePoll'], [$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: '*']]
         ])
             }
