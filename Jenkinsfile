@@ -15,7 +15,10 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
-                checkout scm
+                  checkout(
+                        scm: [
+            extensions: [[$class: 'DisableRemotePoll'], [$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: '*']]
+        ])
             }
         }
         stage('checking function from shared Library') {
