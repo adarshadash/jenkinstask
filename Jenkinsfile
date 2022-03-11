@@ -52,14 +52,15 @@ pipeline{
         stage('Build Docker Image') {
             steps {
                 script {   
-                  sh 'docker build -t adarshadash/sample:1.5 .'
+                  version = welcome.getBuild()    
+                  sh 'docker build -t adarshadash/sample:${version} .'
                 }
             }
         }
         stage('Deploy Docker Image') {
             steps {
                 script {
-                 def version = welcome.getBuild()   
+                 version = welcome.getBuild()   
                  withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u adarshadash -p ${dockerhubpwd}'
                  }  
