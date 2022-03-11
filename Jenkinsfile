@@ -15,6 +15,7 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
+               echo "change"
                checkout(poll:false,
                         changelog:false,
                    scm:[$class: 'GitSCM', branches: [[name: '*/main']], clean:true,
