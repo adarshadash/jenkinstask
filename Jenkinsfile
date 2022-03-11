@@ -10,6 +10,7 @@ pipeline{
         //- update your credentials ID after creating credentials for connecting to Docker Hub
         registryCredential = 'dockerhub_secret'
         dockerImage = ''
+        version=''  
     }
     stages {
         stage('checkout code') {
@@ -62,7 +63,7 @@ pipeline{
                  withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u adarshadash -p ${dockerhubpwd}'
                  }  
-                 sh '''docker push adarshadash/sample:1.5 '''
+                    sh '''docker push adarshadash/sample:${version} '''
                 }
             }
         }
