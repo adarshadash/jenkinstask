@@ -15,10 +15,9 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
-                    checkout(
-                             scm: [
-            extensions: [[$class: 'DisableRemotePoll'], [$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: 'src/.*']]
-                               ])
+                    checkout scm: [$class: 'GitSCM', 
+            branches: [[name: 'master']], 
+            extensions: [[$class: 'UserExclusion', excludedUsers: 'jenkinsadmin']]]
             }
         }
         stage('checking function from shared Library') {
