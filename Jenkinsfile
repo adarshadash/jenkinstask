@@ -15,7 +15,12 @@ pipeline{
         stage('checkout code') {
             steps{
                echo 'pulling directory form git ------>>>>>>'+ env.BRANCH_NAME
-               checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [ [$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: 'src/.*']],userRemoteConfigs: [[credentialsId: 'jenkins_id', url: 'git@github.com:adarshadash/jenkinstask.git']] ])     
+               checkout([$class: 'GitSCM', branches: [[name: '*/main']], clean:true,
+                         doGenerateSubmoduleConfigurations: false, 
+                         extensions: [ [$class: 'DisableRemotePoll'],[$class: 'PathRestriction', excludedRegions: 'application.yaml', includedRegions: 'src/.*']],
+                       userRemoteConfigs: [[credentialsId: 'jenkins_id', url: 'git@github.com:adarshadash/jenkinstask.git']] 
+                        ]
+                     )     
             }
         }
         stage('checking function from shared Library') {
