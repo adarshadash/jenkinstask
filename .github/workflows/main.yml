@@ -32,3 +32,4 @@ jobs:
         run: |
           echo Add other actions to build,
           echo $(echo "${GITHUB_REF}" )
+          echo End of pipeline
