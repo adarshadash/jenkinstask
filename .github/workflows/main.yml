@@ -33,8 +33,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo $(echo "${GITHUB_REF#refs/tags/}" )
-          echo $(echo "${GITHUB_REF#refs/tags/}) | cut -d "." -f1" 
-          echo $(echo "${GITHUB_REF#refs/tags/}) | cut -d "." -f2" 
-          echo $(echo "${GITHUB_REF#refs/tags/}) | cut -d "." -f3" 
-          echo $(echo "${GITHUB_REF#refs/tags/}) | cut -d "." -f0" 
+          echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f1 
+          echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f2 
+          echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f3 
+          echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f0 
           echo End of pipeline
