@@ -32,5 +32,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo $(echo "${GITHUB_REF}" )
+          echo $(echo "${GITHUB_REF#refs/tags/}" )
+          echo $(echo "${GITHUB_REF#refs/tags/*/}" )
+          echo $(echo "${GITHUB_REF#refs/tags/*/*/}" )
           echo End of pipeline
