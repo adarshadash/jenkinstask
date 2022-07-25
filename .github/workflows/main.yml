@@ -32,9 +32,9 @@ jobs:
         run: |
           echo Add other actions to build,
           echo $(echo "${GITHUB_REF#refs/tags/}" )
-          echo patch = $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f1 >> $GITHUB_ENV
-          echo major= $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f2 >> $GITHUB_ENV
-          echo minor= $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f3 >> $GITHUB_ENV
+          echo "patch = $(echo "${GITHUB_REF#refs/tags/}" | cut -d "." -f1)" >> $GITHUB_ENV
+          echo "major= $(echo "${GITHUB_REF#refs/tags/}" | cut -d "." -f2)" >> $GITHUB_ENV
+          echo "minor= $(echo "${GITHUB_REF#refs/tags/}" | cut -d "." -f3)" >> $GITHUB_ENV
           echo ${{env.patch}}
           echo End of pipeline
      
