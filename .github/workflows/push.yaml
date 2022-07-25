@@ -38,7 +38,7 @@ jobs:
           echo "patch1 = $(echo '${GITHUB_REF#refs}' )" >> $GITHUB_ENV
           echo "patch = $(echo "$GITHUB_REF")" >> $GITHUB_ENV
           echo "patch2 = 5" >> $GITHUB_ENV
-          echo ${{env.patch}}
-          echo ${{env.patch1}}
-          echo ${{env.patch2}}
+          echo "${{ env.patch }}"
+          echo "${{ env.patch1 }}"
+          echo "${{ env.patch2 }}"
           echo End of pipeline
