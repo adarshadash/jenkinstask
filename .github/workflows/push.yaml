@@ -32,15 +32,8 @@ jobs:
           echo Add other actions to build,
           echo End of pipeline
       - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo $(echo "${GITHUB_REF#refs}" )
-          echo "patch1 = $(echo '${GITHUB_REF#refs}' )" >> $GITHUB_ENV
-          echo "patch = $(echo "$GITHUB_REF")" >> $GITHUB_ENV
-          echo "patch2 = 5" >> $GITHUB_ENV
+        run:  echo "patch2 = 5" >> $GITHUB_ENV
       - name: check value  
-        run: |
-          echo "${{ env.patch }}"
-          echo "${{ env.patch1 }}"
+        run: 
           echo "${{ env.patch2 }}"
           echo End of pipeline
