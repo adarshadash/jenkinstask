@@ -35,5 +35,18 @@ jobs:
           echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f1 
           echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f2 
           echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f3 
-          echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f0 
           echo End of pipeline
+     
+      - name: Publish test coverage report
+        uses: GuillaumeFalourd/copy-push-files@v1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          name: adarshadash
+          email: adi.dash880@gmail.com
+          source_files: templates
+          remote_repository: https://github.com/adarshadash/sharedlibrary
+          target_branch: main
+          target_dir: vars//echo $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f1 // $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f2 //  $(echo "${GITHUB_REF#refs/tags/}") | cut -d "." -f3
+          commit_message: 'Publishing test coverage report' 
+          access_token: ${{ secrets.token }}  
