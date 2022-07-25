@@ -48,6 +48,6 @@ jobs:
           source_files: templates
           remote_repository: https://github.com/adarshadash/sharedlibrary
           target_branch: main
-          target_dir: vars//${{patch}}//${{major}}//${{minor}}
+          target_dir: vars//${{$GITHUB_ENV.patch}}//${{$GITHUB_ENV.major}}//${{$GITHUB_ENV.minor}}
           commit_message: 'Publishing test coverage report' 
           access_token: ${{ secrets.token }}  
