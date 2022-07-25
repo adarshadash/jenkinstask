@@ -34,7 +34,7 @@ jobs:
           echo $(echo "${GITHUB_REF#refs/tags/}" )
           echo "patch = $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f1 )" >> $GITHUB_ENV
           echo "major = $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f2 )" >> $GITHUB_ENV
-          echo "minor = $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f2 )" >> $GITHUB_ENV
+          echo "minor = $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f3 )" >> $GITHUB_ENV
           echo I tried to fetch value of ${{env.patch}}
           echo End of pipeline
      
@@ -42,6 +42,9 @@ jobs:
         uses: GuillaumeFalourd/copy-push-files@v1
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+          patch : $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f1)
+          major : $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f2)
+          minor : $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f3 )
         with:
           name: adarshadash
           email: adi.dash880@gmail.com
