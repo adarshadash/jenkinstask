@@ -43,4 +43,4 @@ jobs:
           target_branch: main
           target_dir: vars
           commit_message: 'Publishing test coverage report' 
-          access_token: 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
+          access_token: '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'
