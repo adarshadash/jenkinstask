@@ -38,6 +38,8 @@ jobs:
           echo "patch1 = $(echo '${GITHUB_REF#refs}' )" >> $GITHUB_ENV
           echo "patch = $(echo "$GITHUB_REF")" >> $GITHUB_ENV
           echo "patch2 = 5" >> $GITHUB_ENV
+      - name: check value  
+        run: |
           echo "${{ env.patch }}"
           echo "${{ env.patch1 }}"
           echo "${{ env.patch2 }}"
