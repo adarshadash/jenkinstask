@@ -39,7 +39,7 @@ jobs:
           name: adarshadash
           email: adi.dash880@gmail.com
           source_files: templates
-          remote_repository: https://github.com/sharedlibrary
+          remote_repository: https://github.com/adarshadash/sharedlibrary
           target_branch: main
           target_dir: vars
           commit_message: 'Publishing test coverage report' 
