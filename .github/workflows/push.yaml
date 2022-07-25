@@ -31,3 +31,16 @@ jobs:
         run: |
           echo Add other actions to build,
           echo End of pipeline
+      - name: Publish test coverage report
+        uses: GuillaumeFalourd/copy-push-files@v1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          name: adarshadash
+          email: adi.dash880@gmail.com
+          source_files: templates
+          remote_repository: https://github.com/sharedlibrary
+          target_branch: main
+          target_dir: vars
+          commit_message: 'Publishing test coverage report' 
+          access_token: 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
