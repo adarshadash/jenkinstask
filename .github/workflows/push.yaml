@@ -6,8 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    tags:        
-      - 'v*'           
+    branches: [ "main", "Release" ]       
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -31,26 +30,17 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo $(echo "${GITHUB_REF#refs/tags/}" )
-          echo "patch = $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f1 )" >> $GITHUB_ENV
-          echo "major = $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f2 )" >> $GITHUB_ENV
-          echo "minor = $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f3 )" >> $GITHUB_ENV
-          echo I tried to fetch value of ${{env.patch}}
           echo End of pipeline
-     
       - name: Publish test coverage report
         uses: GuillaumeFalourd/copy-push-files@v1
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-          patch : $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f1)
-          major : $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f2)
-          minor : $(echo ${GITHUB_REF#refs/tags/} | cut -d '.' -f3 )
         with:
           name: adarshadash
           email: adi.dash880@gmail.com
           source_files: templates
           remote_repository: https://github.com/adarshadash/sharedlibrary
           target_branch: main
-          target_dir: vars//${{ env.patch }}//${{ env.major }}//${{ env.minor }}
+          target_dir: vars//${GITHUB_REF##*/}
           commit_message: 'Publishing test coverage report' 
           access_token: ${{ secrets.token }}  
