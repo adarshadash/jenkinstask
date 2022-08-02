@@ -38,7 +38,7 @@ jobs:
         with:
           name: adarshadash
           email: adi.dash880@gmail.com
-          source_files: poo,templates
+          source_files: poo templates
           remote_repository: https://github.com/adarshadash/sharedlibrary
           target_branch: main
           target_dir: vars//${GITHUB_REF##*/}
