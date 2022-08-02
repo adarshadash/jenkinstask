@@ -46,8 +46,6 @@ jobs:
           access_token: ${{ secrets.token }}  
       - name: Publish test coverage report
         uses: GuillaumeFalourd/copy-push-files@v1
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           name: adarshadash
           email: adi.dash880@gmail.com
