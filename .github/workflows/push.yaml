@@ -38,20 +38,9 @@ jobs:
         with:
           name: adarshadash
           email: adi.dash880@gmail.com
-          source_files: templates
+          source_files: poo,templates
           remote_repository: https://github.com/adarshadash/sharedlibrary
           target_branch: main
           target_dir: vars//${GITHUB_REF##*/}
-          commit_message: 'Publishing test coverage report' 
-          access_token: ${{ secrets.token }}  
-      - name: Publish test coverage report
-        uses: GuillaumeFalourd/copy-push-files@v1
-        with:
-          name: adarshadash
-          email: adi.dash880@gmail.com
-          source_files: poo
-          remote_repository: https://github.com/adarshadash/sharedlibrary
-          target_branch: main
-          target_dir: vars//${GITHUB_REF##*/}
-          commit_message: 'Publishing test coverage report' 
+          commit_message: 'Publishing test coverage report again' 
           access_token: ${{ secrets.token }}     
